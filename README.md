@@ -36,7 +36,7 @@ Script above will try to automatically open coverage HTML report in your default
 
 All available parameters that can be passed to binary are visible through `cvm-sim --help` command:
 
-```bash
+```console
 cvm-sim --help
 
 This program runs CVM algorithm simulator.
