@@ -2,6 +2,7 @@ package simulator
 
 import (
 	"fmt"
+	"math"
 
 	"github.com/tentameneu/cvm-go"
 	"github.com/tentameneu/cvm-go-sim/internal/config"
@@ -22,10 +23,7 @@ func Run(stream []int) {
 		logging.LogDeep("Current estimation after insert.", "N", n)
 	}
 
-	precision := float64(intCVM.N()) / float64(config.Distinct())
-	if precision > 1.0 {
-		precision = 1 / precision
-	}
+	precision := 1 - math.Abs(float64(intCVM.N()-config.Distinct()))/float64(config.Distinct())
 
 	log().Info("Done estimating number of distinct elements.", "N", intCVM.N(), "precision", fmt.Sprintf("%.2f%%", precision*100))
 }
